@@ -25,7 +25,7 @@ const passportSetup = require('./config/passport-setup')
 //cookie session
 app.use(cookieSession({
     maxAge: 24*60*60*1000,
-    keys:[process.env.COOKIE_KEY]
+    keys:[`${process.env.COOKIE_KEY}`]
 }))
 //paasport initialaize
 app.use(passport.initialize())
