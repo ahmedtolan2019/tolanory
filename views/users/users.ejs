@@ -1,0 +1,69 @@
+<div class="card card-container">
+    <div class="card-content">
+      <h3>hi, Admin</h3>
+    </div>
+  </div>
+  
+  
+  <table class="striped responsive-table">
+    <thead>
+      <tr>
+        <th>Display name</th>
+        <th>Stories</th>
+  
+        
+  
+        <th></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <%users.forEach(user=>{%>
+      <tr>
+        <td><a href="users/<%=user.id%>"><%=user.displayName.substring(0, 20)+"..."%></a></td>
+        <td id="body"><a href="users/<%=user.id%>">Stories by the user</a></td>
+       
+        <td class="story-action"><form method="POST" action="/users/<%=user.id%>?_method=DELETE">
+            <button type="submit" class="waves-effect waves-light btn red">Delete</button>
+          </form></tr>
+      
+      <%})%>
+  
+  
+    </tbody>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fixed-action-btn">
+    <a href="/dashboard/create" class="btn-floating btn-large waves-effect waves-light red"><i
+        class="material-icons">add</i></a>
+  </div>

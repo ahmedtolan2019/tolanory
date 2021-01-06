@@ -1,0 +1,34 @@
+<div class="row">
+    <h3 class="center">Read public stories!</h3>
+</div>
+<div class="row">
+    <% stories.forEach(story => { %>
+    <div class="col s12 m4">
+        <div class="card card-container card small">
+            <div class="card-content">
+                <div class="section">
+                    <h5 class="truncate"><a href="stories/<%=story.id%>"><%= story.title %></a></h5>
+                    <% if (story.user.id===user.id) { %>
+                        <a href="/dashboard/edit/<%=story.id%>" class="btn-floating halfway-fab waves-effect waves-light green "><i class="material-icons">edit</i></a>
+                        
+                    <% } %>
+                   
+                    <div class="chip">
+                        <img src="<%=story.user.image%>" alt="Contact Person">
+                        <%= story.user.displayName%>
+                    </div>
+                    
+                    <p><%= story.createdAt.toISOString().split('T')[0]+" at "+story.createdAt.toISOString().split('T')[1].substring(0, 5)%>
+                    </p>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <div style="overflow: visible;word-wrap: break-word; padding-left: 10px;padding-right: 10px;">
+                    <%=story.body.replace(new RegExp('<[^>]*>', 'g'), '').substring(0, 60)+"..."%> <a href="stories/<%=story.id%>">Read more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</div>

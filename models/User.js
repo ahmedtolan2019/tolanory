@@ -24,8 +24,8 @@ const userSchema = new mongoose.Schema({
         
     },
     image:{
-        type: String
-        
+        type: String,
+        requiered:true
     },
     createdAt:{
         type: Date,

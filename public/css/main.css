@@ -12,3 +12,30 @@ p{
     margin-top: 50px;
     text-align: center;
 }
+
+.story-action{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.story-action a{
+    margin-right: 10px;
+}
+.story-action a:last-child{
+    margin-right: 10px;
+}
+.card{
+    border-radius: 10px;
+}
+
+.card-panel{
+    border-radius: 10px;
+}
+
+#storyView-cards .card:nth-child(2){
+    margin-top: 10px;
+}
+img{
+    max-width: 600px;
+    height: auto;
+}

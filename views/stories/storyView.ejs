@@ -1,0 +1,51 @@
+ <!-- Navbar goes here -->
+
+ <!-- Page Layout here -->
+ <div class="row" style="margin-top: 25px;">
+
+     <div class="col s12 m9">
+         <div class="card">
+
+             <div class="card-content"  style="padding-top: 0px;">
+                 <div class="section">
+                     <h4><%= story.title %> </h4>
+                     <span class="grey-text">Published by <strong><%= storiesByUser[0].user.displayName%> </strong> on <%= story.createdAt.toISOString().split('T')[0]+" at "+story.createdAt.toISOString().split('T')[1].substring(0, 5)%></span>
+                 </div>
+             <div class="divider"></div>
+             <div class="section">
+                 <%-story.body%> 
+             </div>
+         </div>
+        </div>
+     </div>
+
+     <div class="col s12 m3" id="storyView-cards">
+         <div class="card-panel center-align blue lighten-5 blue-text text-darken-4"><strong>More stories by the user</strong>
+        </div>
+        
+        <% storiesByUser.forEach(story => { %>
+            <div class="card card-container card small">
+                <div class="card-content">
+                    <div class="section">
+                        <h5 class="truncate"><a href="stories/<%=story.id%>"><%= story.title %></a></h5>
+                        <% if (story.user.id===user.id) { %>
+                            <a href="/dashboard/edit/<%=story.id%>" class="btn-floating halfway-fab waves-effect waves-light green "><i class="material-icons">edit</i></a>
+                            <a href="/dashbored/delete/<%=story.id%>" class="btn-floating halfway-fab waves-effect waves-light red " style="margin-right:50px ;"><i class="material-icons">delete</i></a>
+                        <% } %>
+                       
+                       
+                        <p><%= story.createdAt.toISOString().split('T')[0]+" at "+story.createdAt.toISOString().split('T')[1].substring(0, 5)%>
+                        </p>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="section">
+                    <div style="overflow: visible;word-wrap: break-word; padding-left: 10px;padding-right: 10px;">
+                        <%=story.body.replace(new RegExp('<[^>]*>', 'g'), '').substring(0, 60)+"..."%> <a href="stories/<%=story.id%>">Read more</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+     </div>
+
+ </div>

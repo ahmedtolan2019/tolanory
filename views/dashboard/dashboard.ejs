@@ -1,0 +1,68 @@
+<div class="card card-container">
+  <div class="card-content">
+    <h3>hi, <%= user.displayName %></h3>
+  </div>
+</div>
+
+<div class="row"><%-include('_noStories') %> </div>
+<table class="striped responsive-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>body</th>
+
+      <th>status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%stories.forEach(story=>{%>
+    <tr>
+      <td><a href="stories/<%=story.id%>"><%=story.title.substring(0, 20)+"..."%></a></td>
+      <td id="body"><%=story.body.replace(new RegExp('<[^>]*>', 'g'), '').substring(0, 20)+"..."%></td>
+      <td><%= story.status %></td>
+      <td class="story-action"><a class="waves-effect waves-light btn" href="/dashboard/edit/<%=story.id%>">edit</a><%-include('../partials/delete',{storyId:story.id})%></td>
+    </tr>
+    
+    <%})%>
+
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="fixed-action-btn">
+  <a href="/dashboard/create" class="btn-floating btn-large waves-effect waves-light red"><i
+      class="material-icons">add</i></a>
+</div>
