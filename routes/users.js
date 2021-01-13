@@ -7,7 +7,7 @@ const Story = require('../models/Story')
 const User = require('../models/User')
 
 const AdminFlow = (req) => {
-    if (req.user.id !== `${process.env.ADMIN_ID}`) {
+    if (req.user.googleId !== `${process.env.ADMIN_ID}`) {
         return false
     } else {
         return true
@@ -69,11 +69,19 @@ router.delete('/:id', async (req, res) => {
         googleId: process.env.ADMIN_ID
     })
 
+    const storiesByTheUser = await Story.find({user: req.params.id})
+
 
     if (req.params.id !== adminUser.id) {
         try {
             const user = await User.findById(req.params.id)
+            storiesByTheUser.forEach(story => {
+                story.remove()
+
+                
+            });
             await user.remove()
+           
             res.redirect('/users')
         } catch (error) {
             res.redirect('/')
