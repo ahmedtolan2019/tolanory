@@ -6,7 +6,7 @@ const Story = require('../models/Story')
 const User = require('../models/User')
 
 const AdminFlow =(req)=>{
-    if(req.user.id !== `${process.env.ADMIN_ID}`){
+    if(req.user.googleId !== `${process.env.ADMIN_ID}`){
         return false
     }else{
         return true

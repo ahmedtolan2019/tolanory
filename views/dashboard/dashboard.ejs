@@ -23,7 +23,7 @@
       <td><a href="stories/<%=story.id%>"><%=story.title.substring(0, 20)+"..."%></a></td>
       <td id="body"><%=story.body.replace(new RegExp('<[^>]*>', 'g'), '').substring(0, 20)+"..."%></td>
       <td><%= story.status %></td>
-      <td class="story-action"><a class="waves-effect waves-light btn" href="/dashboard/edit/<%=story.id%>">edit</a><%-include('../partials/delete',{storyId:story.id})%></td>
+      <td class="story-action"><a style="width:80px;margin-bottom: 5px;" class="waves-effect waves-light btn" href="/dashboard/edit/<%=story.id%>">edit</a><%-include('../partials/delete',{storyId:story.id})%></td>
     </tr>
     
     <%})%>

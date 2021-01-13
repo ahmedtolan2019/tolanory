@@ -9,7 +9,7 @@
     <thead>
       <tr>
         <th>Display name</th>
-        <th>Stories</th>
+        
   
         
   
@@ -20,8 +20,8 @@
     <tbody>
       <%users.forEach(user=>{%>
       <tr>
-        <td><a href="users/<%=user.id%>"><%=user.displayName.substring(0, 20)+"..."%></a></td>
-        <td id="body"><a href="users/<%=user.id%>">Stories by the user</a></td>
+        <td><a href="stories/storiesByTheUser/<%=user.id%>"><%=user.displayName.substring(0, 40)%></a></td>
+        
        
         <td class="story-action"><form method="POST" action="/users/<%=user.id%>?_method=DELETE">
             <button type="submit" class="waves-effect waves-light btn red">Delete</button>

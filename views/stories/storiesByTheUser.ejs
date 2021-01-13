@@ -1,8 +1,8 @@
 <div class="row">
-    <h3 class="center">Read public stories!</h3>
+    <h3 class="center">Stories By <%= storyUser.displayName%></h3>
 </div>
 <div class="row">
-    <%stories.forEach(story => { %>
+    <% stories.forEach(story => { %>
     <div class="col s12 m4">
         <div class="card card-container card small">
             <div class="card-content">
@@ -15,7 +15,7 @@
                    
                     <div class="chip">
                         <img src="<%=story.user.image%>" alt="">
-                        <a href="/stories/storiesByTheUser/<%=story.user.id%>"><%= story.user.displayName%></a>
+                        <%= story.user.displayName%>
                     </div>
                     
                     <p><%= story.createdAt.toISOString().split('T')[0]+" at "+story.createdAt.toISOString().split('T')[1].substring(0, 5)%>
