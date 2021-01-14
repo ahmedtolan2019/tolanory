@@ -22,25 +22,12 @@
       <tr>
         <td><a href="stories/storiesByTheUser/<%=user.id%>"><%=user.displayName.substring(0, 40)%></a></td>
         
-        <% if (AdminFlowStatus) { %>
-          <td class="story-action"><a class="waves-effect waves-light btn red modal-trigger"  href="#modal1">delete</a></td>
-
-          <!-- Modal Structure -->
-          <div id="modal1" class="modal">
-            <div class="modal-content">
-              <h4>You are about to delete this user!</h4>
-              <p>Are you sure?</p>
-            </div>
-            <div class="modal-footer">                            
-                
-              <form method="POST" action="/users/<%=user.id%>?_method=DELETE">
-                <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
-              </form>
-            </tr>
-            </div>
-          </div>
-      <% } %>
-        
+       
+        <td class="story-action">
+          <form method="POST" action="/users/<%=user.id%>?_method=DELETE">
+            <button type="submit" class="waves-effect waves-light btn red">Delete</button>
+          </form>
+        </tr>
       
       <%})%>
   

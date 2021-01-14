@@ -77,11 +77,11 @@ router.delete('/:id', async (req, res) => {
             const user = await User.findById(req.params.id)
             storiesByTheUser.forEach(story => {
                 story.remove()
-
+                console.log("story removed!")
                 
             });
             await user.remove()
-           
+            console.log("user removed!")
             res.redirect('/users')
         } catch (error) {
             res.redirect('/')

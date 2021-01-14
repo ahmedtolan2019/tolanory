@@ -1,0 +1,13 @@
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>You are about to delete this user!</h4>
+      <p>Are you sure?</p>
+    </div>
+    <div class="modal-footer">                            
+        
+      <form method="POST" action="/users/<%=userId%>?_method=DELETE">
+        <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+      </form>
+      
+    </div>
+  </div>
