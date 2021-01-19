@@ -129,12 +129,17 @@ router.put('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async(req, res)=>{
+    const AdminFlowStatus= AdminFlow(req);
 try {
    const story =  await Story.findById(req.params.id)
    await story.remove()
-   res.redirect('/')
+   if(AdminFlowStatus){
+    res.redirect('/stories')
+   }else{
+    res.redirect('/')
+   }
 } catch (error) {
-    res.redirect('dashboard')
+    res.redirect('/dashboard')
 }
 })
 

@@ -43,13 +43,14 @@ const privateStoryCheck = (req, res, next) => {
 }
 
 
-
+//all stories
 router.get('/', async (req, res) => {
     const AdminFlowStatus = AdminFlow(req)
     const allstories = await Story.find({
         status: 'public'
     }).populate('user').sort({
-        createdAt: -1
+        "createdAt": -1
+        
     }).exec()
     const stories = []
     for (let index = 0; index < allstories.length; index++) {
@@ -76,12 +77,14 @@ router.get('/', async (req, res) => {
 
 })
 
+//one story
 router.get('/:id', privateStoryCheck, async (req, res) => {
     const AdminFlowStatus = AdminFlow(req);
     try {
         const story = await Story.findById(req.params.id).populate('user')
         const storiesByUser = await Story.find({
-            user: story.user
+            user: story.user,
+            status: 'public'
         }).populate('user').where('_id').ne(req.params.id).limit(4).exec()
         res.render('stories/storyView', {
             story: story,
@@ -107,7 +110,7 @@ router.get('/storiesByTheUser/:userId', async (req, res) => {
             status: 'public',
             user: req.params.userId
         }).populate('user').sort({
-            createdAt: -1
+            "createdAt": -1
         }).then((storiesByTheUser) => {
 
 
